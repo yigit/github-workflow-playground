@@ -34,3 +34,9 @@ jobs:
         run: ${GITHUB_WORKSPACE}/my_bash.sh
         env:
           my_secret: ${{ secrets.TEST_SECRET_1 }}
+      - id: foo
+        uses: yigit/github-action-playground@main
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo result ${{ steps.foo.outputs.task_output }}
+        shell: bash
