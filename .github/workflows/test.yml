@@ -40,3 +40,9 @@ jobs:
           who-to-greet: 'Mona the Octocat'
       - run: echo result ${{ steps.foo.outputs.task_output }}
         shell: bash
+      - run: curl -v "http://0.0.0.0:8123/?foo=bar"
+        shell: bash
+      - run: curl -v "http://0.0.0.0:8123/shutdown"
+        if: always()
+        shell: bash
+        
