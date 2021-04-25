@@ -37,4 +37,7 @@ jobs:
       - id: foo
         uses: yigit/github-action-playground@docker
         with:
-          args: --detach 'Mona the Octocat'
+          args: 'Mona the Octocat'
+      - id: ping
+        run: curl "http://localhost:8123/?foo=bar"
+        shell: bash
