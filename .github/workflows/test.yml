@@ -41,6 +41,5 @@ jobs:
       - id: check_images
         run: docker ps
         shell: bash
-      - id: ping
-        run: curl -v "http://0.0.0.0:8123/?foo=bar"
+      - run: curl -v "http://0.0.0.0:8123/?foo=bar"
         shell: bash
