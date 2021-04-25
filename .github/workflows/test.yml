@@ -38,6 +38,9 @@ jobs:
         uses: yigit/github-action-playground@docker
         with:
           args: 'Mona the Octocat'
+      - id: check_images
+        run: docker ps
+        shell: bash
       - id: ping
         run: curl "http://localhost:8123/?foo=bar"
         shell: bash
