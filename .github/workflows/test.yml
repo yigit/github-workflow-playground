@@ -48,4 +48,6 @@ jobs:
       - run: ls -lah /home/runner/work/_actions/yigit/github-action-playground/main
         if: always()
         shell: bash
+      - run: whoami
+        shell: bash
         
