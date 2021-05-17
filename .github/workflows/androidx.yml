@@ -20,15 +20,16 @@ jobs:
           distribution: 'adopt'
       - name: "params"
         run: echo ${{ env.GITHUB_WORKSPACE }}
-      - name: "current dir"
-        run: readlink -f .
+      - name: "prepare dir"
+        run: echo "::set-output name=output-dir::$(readlink -f .)"
+        id: dirs
       - id: foo
         uses: androidX/androidx-ci-action@yigit/action-1
         with:
           run-id: ${{ github.event.workflow_run.id }}
           gcp-token: ${{ secrets.GCP_SA_KEY }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          output-folder: ${{ env.GITHUB_WORKSPACE }}/outputs
+          output-folder: ${{ steps.dirs.outputs.output-dir }}
       - uses: actions/upload-artifact@v2
         with:
           name: outputs
