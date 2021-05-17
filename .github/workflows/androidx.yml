@@ -1,0 +1,24 @@
+name: AndroidX
+
+# Controls when the action will run. 
+on:
+  workflow_run:
+    workflows: ["AndroidX Presubmits", "CI"]
+    types: [completed]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    name: A job to say hello
+    steps:
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - id: foo
+        uses: androidX/androidx-ci-action@yigit/action-1
+        with:
+          missing-param: 'foo'
