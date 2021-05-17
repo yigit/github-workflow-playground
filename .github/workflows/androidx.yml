@@ -18,6 +18,10 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+      - name: "params"
+        run: echo ${{ env.GITHUB_WORKSPACE }}
+      - name: "current dir"
+        run: echo readlink -f .
       - id: foo
         uses: androidX/androidx-ci-action@yigit/action-1
         with:
