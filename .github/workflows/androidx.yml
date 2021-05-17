@@ -21,4 +21,11 @@ jobs:
       - id: foo
         uses: androidX/androidx-ci-action@yigit/action-1
         with:
-          missing-param: 'foo'
+          run-id: ${{ github.event.workflow_run.id }}
+          gcp-token: ${{ secrets.GCP_SA_KEY }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          output-folder: ${{ env.GITHUB_WORKSPACE }}/outputs
+      - uses: actions/upload-artifact@v2
+        with:
+          name: outputs
+          path: ${{ evn.GITHUB_WORKSPACE }}/outputs
