@@ -21,7 +21,7 @@ jobs:
       - name: "params"
         run: echo ${{ env.GITHUB_WORKSPACE }}
       - name: "prepare dir"
-        run: echo "::set-output name=output-dir::$(readlink -f .)"
+        run: echo "::set-output name=output-dir::$(readlink -f .)/outputs"
         id: dirs
       - id: foo
         uses: androidX/androidx-ci-action@yigit/action-1
