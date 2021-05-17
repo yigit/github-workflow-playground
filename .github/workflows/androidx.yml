@@ -18,6 +18,6 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - id: foo
-        uses: androidX/androidx-ci-action@action-1
+        uses: androidX/androidx-ci-action@yigit/action-1
         with:
           missing-param: 'foo'
