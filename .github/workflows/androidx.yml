@@ -31,6 +31,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           output-folder: ${{ steps.dirs.outputs.output-dir }}
       - uses: actions/upload-artifact@v2
+        if: always()
         with:
           name: outputs
           path: ${{ env.GITHUB_WORKSPACE }}/outputs
