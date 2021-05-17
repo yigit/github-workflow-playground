@@ -34,4 +34,4 @@ jobs:
         if: always()
         with:
           name: outputs
-          path: ${{ env.GITHUB_WORKSPACE }}/outputs
+          path: ${{ steps.dirs.outputs.output-dir }}
