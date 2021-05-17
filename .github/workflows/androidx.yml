@@ -28,4 +28,4 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: outputs
-          path: ${{ evn.GITHUB_WORKSPACE }}/outputs
+          path: ${{ env.GITHUB_WORKSPACE }}/outputs
