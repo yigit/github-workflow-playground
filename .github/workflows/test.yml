@@ -32,3 +32,12 @@ jobs:
         run: ${GITHUB_WORKSPACE}/my_bash.sh
         env:
           my_secret: ${{ secrets.TEST_SECRET_1 }}
+      - id: foo
+        uses: yigit/github-action-playground@docker
+        with:
+          args: 'Mona the Octocat'
+      - id: check_images
+        run: docker ps
+        shell: bash
+      - run: curl -v "http://0.0.0.0:8123/?foo=bar"
+        shell: bash
