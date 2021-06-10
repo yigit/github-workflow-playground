@@ -33,3 +33,20 @@ jobs:
         run: ${GITHUB_WORKSPACE}/my_bash.sh
         env:
           my_secret: ${{ secrets.TEST_SECRET_1 }}
+      - id: foo
+        uses: yigit/github-action-playground@main
+        with:
+          who-to-greet: 'Mona the Octocat'
+      - run: echo result ${{ steps.foo.outputs.task_output }}
+        shell: bash
+      - run: curl -v "http://0.0.0.0:8123/?foo=bar"
+        shell: bash
+      - run: curl -v "http://0.0.0.0:8123/shutdown"
+        if: always()
+        shell: bash
+      - run: ls -lah /home/runner/work/_actions/yigit/github-action-playground/main
+        if: always()
+        shell: bash
+      - run: whoami
+        shell: bash
+        
