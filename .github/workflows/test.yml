@@ -19,14 +19,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: "Get changed files in push or pull_request"
-        id: new-changed-files
-        uses: yigit/github-action-playground@changed-files
-      - name: "AndroidX Get changed files in push or pull_request"
         id: changed-files
-        uses: androidx/changed-files-action@main
+        uses: yigit/github-action-playground@changed-files
       - name: "Parse androidX changed-files as ktlint args"
         id: ktlint-file-args
         run: |
           set -x
           KTLINT_FILES=`echo "${{ steps.changed-files.outputs.files }}" | sed 's|[^ ]* *|--file=${{ github.workspace }}/&|g' | grep -v "*.txt"`
           echo "::set-output name=ktlint-file-args::$KTLINT_FILES"
+      - name: "Print ktlint args"
+        run: |
+          echo "${{steps.ktlint-file-args.outputs.ktlint-file-args}}"
