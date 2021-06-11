@@ -6,11 +6,7 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ "main", "androidx-action-playground" ]
   pull_request:
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,14 +18,15 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-
-
-      - name: What is my secret?
-        run: echo Hello, world! ${my_secret}
-        env:
-          my_secret: ${{ secrets.TEST_SECRET_1 }}
-      - name: What is my secret in script?
-        run: ${GITHUB_WORKSPACE}/my_bash.sh
-        env:
-          my_secret: ${{ secrets.TEST_SECRET_1 }}
+      - name: "Get changed files in push or pull_request"
+        id: changed-files
+        uses: yigit/github-action-playground@changed-files
+      - name: "Parse androidX changed-files as ktlint args"
+        id: ktlint-file-args
+        run: |
+          set -x
+          KTLINT_FILES=`echo "${{ steps.changed-files.outputs.files }}" | sed 's|[^ ]* *|--file=${{ github.workspace }}/&|g' | grep -v "*.txt"`
+          echo "::set-output name=ktlint-file-args::$KTLINT_FILES"
+      - name: "Print ktlint args"
+        run: |
+          echo "${{steps.ktlint-file-args.outputs.ktlint-file-args}}"
