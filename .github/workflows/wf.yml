@@ -1,4 +1,4 @@
-name: WF_HOOK
+name: WF
 
 # Controls when the action will run. 
 on:
@@ -10,11 +10,11 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to log
-    name: "Workflow Run"
+    if: ${{ false }}
+    name: A job to say hello
     steps:
       - name: "Setup global constants"
-        id: global-constants
+        id: anId
         run: |
           set -x
           cat $GITHUB_EVENT_PATH
