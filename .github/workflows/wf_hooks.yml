@@ -1,7 +1,10 @@
-name: On Workflow Run
+name: WF_HOOK
+
+# Controls when the action will run. 
 on:
   workflow_run:
-    workflows: ["CI"]
+    workflows: ["AndroidX Presubmits", "CI"]
+    types: [completed]
 jobs:
   log:
     runs-on: ubuntu-latest
