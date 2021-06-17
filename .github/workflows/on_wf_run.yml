@@ -1,10 +1,12 @@
 name: On Workflow Run
 on:
+  workflows: ["CI"]
   workflow_run:
     types: [completed, requested]
 jobs:
   log:
     runs-on: ubuntu-latest
+    name: "Workflow Run Action"
     steps:
       - name: "Setup global constants"
         id: global-constants
