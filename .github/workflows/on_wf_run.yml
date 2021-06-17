@@ -4,7 +4,7 @@ on:
     types: [completed, requested]
 jobs:
   log:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: "Setup global constants"
         id: global-constants
