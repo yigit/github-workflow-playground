@@ -10,7 +10,7 @@ on:
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ false }}
     name: A job to say hello
     steps:
       - name: Set up JDK 11

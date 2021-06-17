@@ -1,0 +1,20 @@
+name: WF
+
+# Controls when the action will run. 
+on:
+  workflow_run:
+    workflows: ["AndroidX Presubmits", "CI"]
+    types: [completed]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    if: ${{ false }}
+    name: A job to say hello
+    steps:
+      - name: "Setup global constants"
+        id: anId
+        run: |
+          set -x
+          cat $GITHUB_EVENT_PATH
