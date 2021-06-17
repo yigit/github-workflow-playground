@@ -1,0 +1,13 @@
+name: On Workflow Run
+on:
+  workflow_run:
+    types: [completed]
+jobs:
+  log:
+    runs-on:ubuntu-latest
+    steps:
+      - name: "Setup global constants"
+        id: global-constants
+        run: |
+          set -x
+          cat $GITHUB_EVENT_PATH
