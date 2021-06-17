@@ -17,3 +17,9 @@ jobs:
         run: |
           set -x
           cat $GITHUB_EVENT_PATH
+      - name: "Start webhook"
+        uses: yigit/github-workflow-webhook-action@handle-workflow-run-target
+        with:
+          url: 'https://google.com'
+          secret: "none"
+          payload: '{ "platform": "all", "token": "no token", "state": "started"}'
