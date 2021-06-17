@@ -1,0 +1,19 @@
+name: WF2
+
+# Controls when the action will run. 
+on:
+  workflow_run:
+    workflows: ["WF"]
+    types: [completed]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - name: "From another WF run"
+        id: anId
+        run: |
+          set -x
+          cat $GITHUB_EVENT_PATH
