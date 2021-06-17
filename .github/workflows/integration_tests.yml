@@ -52,4 +52,4 @@ jobs:
         with:
           url: 'https://androidx.dev/github/androidX/presubmit/hook'
           secret: ${{ secrets.ANDROIDX_PRESUBMIT_HOOK_SECRET }}
-          payload: '{ "platform": "all", "token": "${{ secrets.GITHUB_TOKEN }}", "state": "completed", "src" : "workflow_run", "success": ${{ steps.workflow-status.outputs.result }} }'
+          payload: '{ "platform": "all", "token": "${{ secrets.GITHUB_TOKEN }}", "state": "completed", "success": ${{ steps.workflow-status.outputs.result }}, "src" : "workflow_run" }'
