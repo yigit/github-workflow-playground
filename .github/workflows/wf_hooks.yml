@@ -5,9 +5,12 @@ on:
   workflow_run:
     workflows: ["AndroidX Presubmits", "CI"]
     types: [completed]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  log:
+  hello_world_job:
     runs-on: ubuntu-latest
+    name: A job to log
     name: "Workflow Run"
     steps:
       - name: "Setup global constants"
