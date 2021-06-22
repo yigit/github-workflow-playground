@@ -33,6 +33,8 @@ jobs:
           git checkout -b dist-$TAG
           echo $TAG > version.txt
           git add version.txt
+          git config user.email "${{ github.event.head_commit.author.email }}"
+          git config user.name "${{ github.event.head_commit.author.name }}"
           git commit -m "adding version for $TAG"
           git push origin dist-$TAG -f
           echo "done pushing to git"
