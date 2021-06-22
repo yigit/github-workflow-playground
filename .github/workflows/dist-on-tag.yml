@@ -30,11 +30,13 @@ jobs:
           REF="${{ github.event.ref }}"
           TAG=$(echo $REF| sed 's/refs\/tags\///')
           echo "TAG: $TAG"
+          git config user.email "${{ github.event.head_commit.author.email }}"
+          git config user.name "${{ github.event.head_commit.author.name }}"
           git checkout -b dist-$TAG
           echo $TAG > version.txt
           git add version.txt
-          git config user.email "${{ github.event.head_commit.author.email }}"
-          git config user.name "${{ github.event.head_commit.author.name }}"
+          rm -rf .github
+          git add .github
           git commit -m "adding version for $TAG"
           git push origin dist-$TAG -f
           echo "done pushing to git"
