@@ -27,8 +27,10 @@ jobs:
           echo ${{ github.event.ref }}
           REF="${{ github.event.ref }}"
           TAG=$(echo $REF| sed 's/refs\/tags\///')
-          echo "-----"
-          echo "-----"
-          echo "-----"
-          echo "-----"
-          cat $GITHUB_EVENT_PATH
+          echo "TAG: $TAG"
+          git checkout -b dist-$TAG
+          cat $TAG > version.txt
+          git add version.txt
+          git commit -m "adding version for $TAG"
+          git push origin dist-$TAG
+          echo "done pushing to git"
