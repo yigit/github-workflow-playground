@@ -33,7 +33,7 @@ jobs:
           echo "TAG: $TAG DIST_TAG: $DIST_TAG"
           git config user.email "${{ github.event.head_commit.author.email }}"
           git config user.name "${{ github.event.head_commit.author.name }}"
-          git checkout -b $DIST_TAG
+          git checkout -b tmp-$DIST_TAG
           echo $TAG > version.txt
           git add version.txt
           rm -rf .github
