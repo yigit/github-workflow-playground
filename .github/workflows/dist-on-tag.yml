@@ -24,4 +24,11 @@ jobs:
         id: event-args
         run: |
           set -x
+          echo ${{ github.event.ref }}
+          REF="${{ github.event.ref }}"
+          TAG=$(echo $REF| sed 's/refs\/tags\///')
+          echo "-----"
+          echo "-----"
+          echo "-----"
+          echo "-----"
           cat $GITHUB_EVENT_PATH
