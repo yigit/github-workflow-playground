@@ -31,8 +31,8 @@ jobs:
           TAG=$(echo $REF| sed 's/refs\/tags\///')
           echo "TAG: $TAG"
           git checkout -b dist-$TAG
-          cat $TAG > version.txt
+          echo $TAG > version.txt
           git add version.txt
           git commit -m "adding version for $TAG"
-          git push origin dist-$TAG
+          git push origin dist-$TAG -f
           echo "done pushing to git"
