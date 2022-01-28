@@ -38,6 +38,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/action1
-        if: ${{ matrix.project == "biometric" }}
+        if: ${{ matrix.project == 'biometric' }}
         with:
           who-to-greet: ${{ matrix.project }}
