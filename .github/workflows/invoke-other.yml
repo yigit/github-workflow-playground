@@ -24,6 +24,7 @@ jobs:
       os: ubuntu-latest
   
   callcomposite:
+    runs-on: ubuntu-latest
     steps:
       - uses: ./.github/actions/action1
         with:
