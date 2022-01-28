@@ -14,8 +14,6 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=random-id::$(echo $RANDOM)"
-      shell: bash
-    - run: ${{ github.action_path }}/goodbye.sh
-      shell: bash
+    - run: |
+      set -x
+      echo "i'm running with ${{ inputs.who-to-greet }}"
