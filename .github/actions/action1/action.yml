@@ -10,6 +10,3 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: |
-      set -x
-      echo "im running with"
