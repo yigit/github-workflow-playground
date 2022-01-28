@@ -19,4 +19,4 @@ jobs:
       - name: step1
         run: |
           set -x
-          echo "i'm running with ${{ env.project }} and ${{ env.project-root }}"
+          echo "i'm running with ${{ inputs.project }} and ${{ inputs.project-root }}"
