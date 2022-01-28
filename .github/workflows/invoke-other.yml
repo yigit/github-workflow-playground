@@ -8,7 +8,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-workflow-passing-data:
-    uses: ./.github/workflows/sub-workflow-1
+    uses: ./.github/workflows/sub-workflow-1.yml
     with:
       project: p1
       project-root: p1-root
