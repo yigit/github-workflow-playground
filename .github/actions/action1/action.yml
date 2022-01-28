@@ -12,4 +12,4 @@ runs:
       shell: bash
     - run: |
       set -x
-      echo "i'm running with ${{ inputs.who-to-greet }}"
+      echo "im running with"
