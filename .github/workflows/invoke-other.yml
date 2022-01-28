@@ -19,9 +19,9 @@ jobs:
   callother:
     uses: ./.github/workflows/sub-workflow-1.yml
     with:
-      project: ${{ matrix.project }}
-      project-root: ${{ matrix.project-root }}
-      os: ${{ matrix.custom-os || matrix.os }}
+      project: p1
+      project-root: p1-root
+      os: ubuntu-latest
   
   callcomposite:
     steps:
