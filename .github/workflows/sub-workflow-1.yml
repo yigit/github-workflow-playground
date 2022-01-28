@@ -17,7 +17,7 @@ jobs:
     name: Pass input and secrets to my-action
     runs-on: ${{ inputs.os }}
     steps:
-      name: step1
-      run: |
-        set -x
-        echo "i'm running with ${{ env.project }} and ${{ env.project-root }}"
+      - name: step1
+        run: |
+          set -x
+          echo "i'm running with ${{ env.project }} and ${{ env.project-root }}"
