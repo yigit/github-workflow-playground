@@ -17,7 +17,7 @@ jobs:
         run: echo Hello, world!
 
   callother:
-    uses: .github/workflows/sub-workflow-1.yml
+    uses: ./.github/workflows/sub-workflow-1.yml
     with:
       project: p1
       project-root: p1-root
