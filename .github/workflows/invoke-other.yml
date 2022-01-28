@@ -22,8 +22,9 @@ jobs:
       project: ${{ matrix.project }}
       project-root: ${{ matrix.project-root }}
       os: ${{ matrix.custom-os || matrix.os }}
+  
   callcomposite:
     steps:
       - uses: ./.github/actions/action1
-      with:
-        who-to-greet: 'hello'
+        with:
+          who-to-greet: 'hello'
