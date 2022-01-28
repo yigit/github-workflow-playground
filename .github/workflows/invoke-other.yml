@@ -8,14 +8,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   call-workflow-passing-data:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-      - uses: ./.github/workflows/sub-workflow-1.yml
-        with:
-          project: p1
-          project-root: p1-root
-          os: macos-latest
+    uses: ./.github/workflows/sub-workflow-1.yml
+    with:
+      project: p1
+      project-root: p1-root
+      os: macos-latest
