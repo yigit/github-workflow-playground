@@ -1,0 +1,15 @@
+name: Invokes other
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  call-workflow-passing-data:
+    uses: ./.github/workflows/sub-workflow-1
+    with:
+      project: p1
+      project-root: p1-root
+      os: macos-latest

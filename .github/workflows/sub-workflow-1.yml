@@ -1,0 +1,21 @@
+on:
+  workflow_call:
+    inputs:
+      project:
+        required: true
+        type: string
+      project-root:
+        required: true
+        type: string
+      os:
+        required: true
+        type: string
+jobs:
+  example_job:
+    name: Pass input and secrets to my-action
+    runs-on: ${{ inputs.os }}
+    steps:
+      id: logme
+      run: |
+        set -x
+        echo "i'm running with ${{ env.project }} and ${{ env.project-root }}"
