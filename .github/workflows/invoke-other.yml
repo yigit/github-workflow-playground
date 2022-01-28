@@ -17,8 +17,18 @@ jobs:
         run: echo Hello, world!
 
   callother:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        project: ["activity", "biometric", "compose-runtime", "datastore", "fragment", "lifecycle", "navigation", "paging", "room", "work"]
+        include:
+          - project: "compose-runtime"
+            project-root: "compose/runtime"
+          - project: "navigation"
+            custom-os: "macos-latest" # run one of them on a mac to ensure mac setup works
     uses: ./.github/workflows/sub-workflow-1.yml
     with:
-      project: p1
-      project-root: p1-root
-      os: macos-latest
+      project: ${{ matrix.project }}
+      project-root: ${{ matrix.project-root }}
+      os: ${{ matrix.custom-os || matrix.os }}
