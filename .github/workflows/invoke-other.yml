@@ -10,6 +10,10 @@ jobs:
   call-workflow-passing-data:
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
       - uses: ./.github/workflows/sub-workflow-1.yml
         with:
           project: p1
