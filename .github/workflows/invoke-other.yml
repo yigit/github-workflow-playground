@@ -24,9 +24,19 @@ jobs:
       os: ubuntu-latest
   
   callcomposite:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        project: ["activity", "biometric", "compose-runtime", "datastore", "fragment", "lifecycle", "navigation", "paging", "room", "work"]
+        include:
+          - project: "compose-runtime"
+            project-root: "compose/runtime"
+          - project: "navigation"
+            custom-os: "macos-latest" # run one of them on a mac to ensure mac setup works
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: ./.github/actions/action1
         with:
-          who-to-greet: 'hello'
+          who-to-greet: ${{ matrix.project }}
