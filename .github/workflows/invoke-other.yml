@@ -14,7 +14,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - uses: ./.github/workflows/sub-workflow-1
+      - uses: ./.github/workflows/sub-workflow-1.yml
         with:
           project: p1
           project-root: p1-root

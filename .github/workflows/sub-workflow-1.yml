@@ -1,3 +1,5 @@
+name: "My sub workflow"
+
 on:
   workflow_call:
     inputs:
