@@ -45,7 +45,7 @@ jobs:
         run: |
           set -x
           BRANCH_NAME="ci-workflow/update-prebuilts-${{ github.run_id }}-${{ github.run_number }}"
-          COMMIT_MSG "%q" "Update Prebuilts for Playground
+          COMMIT_MSG="Update Prebuilts for Playground
             This workflow was triggered by ${{ github.event.sender.login }}.
             ${{ github.event.inputs.comment }}
             Bug: n/a
