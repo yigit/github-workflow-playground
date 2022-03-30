@@ -45,18 +45,20 @@ jobs:
         run: |
           set -x
           BRANCH_NAME="ci-workflow/update-prebuilts-${{ github.run_id }}-${{ github.run_number }}"
-          git config user.email "bot@androidx.dev"
-          git config user.name "AndroidX Github Bot"
-          git checkout -b $BRANCH_NAME
-          git add auto.txt
-          git commit -m "Update Prebuilts for Playground \
+          COMMIT_MSG="Update Prebuilts for Playground \
             This workflow was triggered by ${{ github.event.sender.login }}. \
             ${{ github.event.inputs.comment }} \
 
             Bug: n/a \
             Test: CI"
+          git config user.email "bot@androidx.dev"
+          git config user.name "AndroidX Github Bot"
+          git checkout -b $BRANCH_NAME
+          git add auto.txt
+          git commit -m $COMMIT_MSG
           git push origin $BRANCH_NAME
-          echo "::set-output name=branch_name::$BRANCH_NAME"
+          echo "::set-output name=branch-name::$BRANCH_NAME"
+          echo "::set-output name=commit-msg::$COMMIT_MSG"
       - name: Create Pull Request
         if: ${{ steps.check-for-changes.outputs.has_changes >= 1 }}
         uses: actions/github-script@v6
@@ -67,7 +69,7 @@ jobs:
               title: 'Update Prebuilts',
               owner,
               repo,
-              head: '${{ steps.create-commit.outputs.branch_name }}',
+              head: '${{ steps.create-commit.outputs.branch-name }}',
               base: '${{ github.event.inputs.target-branch}}',
-              
+              body: ${{ steps.create-commit.outputs.commit-msg }}
             });
