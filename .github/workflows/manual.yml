@@ -71,5 +71,5 @@ jobs:
               repo,
               head: '${{ steps.create-commit.outputs.branch-name }}',
               base: '${{ github.event.inputs.target-branch}}',
-              body: ['${{ steps.create-commit.outputs.commit-msg }}']
+              body: '${{ steps.create-commit.outputs.commit-msg }}'
             });
