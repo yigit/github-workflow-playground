@@ -45,11 +45,11 @@ jobs:
         run: |
           set -x
           BRANCH_NAME="ci-workflow/update-prebuilts-${{ github.run_id }}-${{ github.run_number }}"
-          printf -v COMMIT_MSG "%q" "Update Prebuilts for Playground \n\
-            This workflow was triggered by ${{ github.event.sender.login }}. \n\
-            ${{ github.event.inputs.comment }} \n\
-
-            Bug: n/a \n\
+          printf -v COMMIT_MSG "%q" "Update Prebuilts for Playground \
+            This workflow was triggered by ${{ github.event.sender.login }}. \
+            ${{ github.event.inputs.comment }} \
+          \
+            Bug: n/a \
             Test: CI"
           git config user.email "bot@androidx.dev"
           git config user.name "AndroidX Github Bot"
@@ -71,5 +71,5 @@ jobs:
               repo,
               head: '${{ steps.create-commit.outputs.branch-name }}',
               base: '${{ github.event.inputs.target-branch}}',
-              body: '${{ steps.create-commit.outputs.commit-msg }}'
+              body: ['${{ steps.create-commit.outputs.commit-msg }}']
             });
