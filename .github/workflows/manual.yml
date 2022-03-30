@@ -45,11 +45,10 @@ jobs:
         run: |
           set -x
           BRANCH_NAME="ci-workflow/update-prebuilts-${{ github.run_id }}-${{ github.run_number }}"
-          printf -v COMMIT_MSG "%q" "Update Prebuilts for Playground \
-            This workflow was triggered by ${{ github.event.sender.login }}. \
-            ${{ github.event.inputs.comment }} \
-          \
-            Bug: n/a \
+          COMMIT_MSG "%q" "Update Prebuilts for Playground
+            This workflow was triggered by ${{ github.event.sender.login }}.
+            ${{ github.event.inputs.comment }}
+            Bug: n/a
             Test: CI"
           git config user.email "bot@androidx.dev"
           git config user.name "AndroidX Github Bot"
