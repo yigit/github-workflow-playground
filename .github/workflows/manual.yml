@@ -55,7 +55,7 @@ jobs:
           git config user.name "AndroidX Github Bot"
           git checkout -b $BRANCH_NAME
           git add auto.txt
-          git commit -m $COMMIT_MSG
+          git commit -m \"$COMMIT_MSG\"
           git push origin $BRANCH_NAME
           echo "::set-output name=branch-name::$BRANCH_NAME"
           echo "::set-output name=commit-msg::$COMMIT_MSG"
@@ -71,5 +71,5 @@ jobs:
               repo,
               head: '${{ steps.create-commit.outputs.branch-name }}',
               base: '${{ github.event.inputs.target-branch}}',
-              body: ${{ steps.create-commit.outputs.commit-msg }}
+              body: '${{ steps.create-commit.outputs.commit-msg }}'
             });
