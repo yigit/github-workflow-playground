@@ -50,7 +50,7 @@ jobs:
             ${{ github.event.inputs.comment }} \n\
 
             Bug: n/a \n\
-            Test: CI"`
+            Test: CI"
           git config user.email "bot@androidx.dev"
           git config user.name "AndroidX Github Bot"
           git checkout -b $BRANCH_NAME
