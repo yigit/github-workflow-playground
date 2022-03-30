@@ -57,7 +57,7 @@ jobs:
           git commit -m "${COMMIT_MSG}"
           git push origin $BRANCH_NAME
           echo "::set-output name=branch-name::$BRANCH_NAME"
-          echo "::set-output name=commit-msg::$COMMIT_MSG"
+          echo "::set-output name=commit-msg::'$COMMIT_MSG'"
       - name: Create Pull Request
         if: ${{ steps.check-for-changes.outputs.has_changes >= 1 }}
         uses: actions/github-script@v6
