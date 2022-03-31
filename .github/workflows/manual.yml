@@ -63,7 +63,7 @@ jobs:
               owner,
               repo,
               head: '${{ steps.create-commit.outputs.branch-name }}',
-              base: '${{ github.event.inputs.target-branch }}',
+              base: '${{ github.event.inputs.target-branch || 'main' }}',
               body: [
                 'This workflow was triggered by ${{ github.event.sender.login }}.',
                 context.payload?.inputs?.comment || '',
