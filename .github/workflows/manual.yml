@@ -46,7 +46,7 @@ jobs:
             [
             'Update Prebuilts for Playground',
             'This workflow was triggered by ${{ github.event.sender.login }}.',
-            github.event.inputs.comment,
+            context.event.inputs.comment,
             'Bug: n/a',
             'Test: CI',
             ].join('\n')
