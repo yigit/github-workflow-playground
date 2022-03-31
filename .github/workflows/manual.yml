@@ -48,7 +48,7 @@ jobs:
             'This workflow was triggered by ${{ github.event.sender.login }}.',
             github.event.inputs.comment,
             'Bug: n/a',
-            Test: CI',
+            'Test: CI',
             ].join('\n')
       - name: "we have changes"
         shell: bash
