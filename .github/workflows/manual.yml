@@ -43,7 +43,7 @@ jobs:
         id: prepare-commit-message
         with:
           script: |
-            [
+            return [
             'Update Prebuilts for Playground',
             'This workflow was triggered by ${{ github.event.sender.login }}.',
             context.payload.inputs.comment || '',
