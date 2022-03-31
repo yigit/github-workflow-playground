@@ -58,13 +58,12 @@ jobs:
           script: |
             const { repo, owner } = context.repo;
             const result = await github.rest.pulls.create({
-              title: 'Update Prebuilts',
+              title: 'Update Prebuilts for Playground',
               owner,
               repo,
               head: '${{ steps.create-commit.outputs.branch-name }}',
-              base: '${{ github.event.inputs.target-branch}}',
+              base: '${{ github.event.inputs.target-branch }}',
               body: [
-                'Update Prebuilts for Playground',
                 'This workflow was triggered by ${{ github.event.sender.login }}.',
                 context.payload.inputs.comment || '',
                 'Bug: n/a',
