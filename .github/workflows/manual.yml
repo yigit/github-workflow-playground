@@ -81,7 +81,7 @@ jobs:
               title: 'Update Prebuilts',
               owner,
               repo,
-              head: context.steps.create-commit.outputs.branch-name,
+              head: '${{ steps.create-commit.outputs.branch-name }}',
               base: '${{ github.event.inputs.target-branch}}',
-              body: context.steps.prepare-commit-message.outputs.result
+              body: ${{ steps.prepare-commit-message.outputs.result }}
             });
