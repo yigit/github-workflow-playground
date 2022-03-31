@@ -13,12 +13,12 @@ on:
         default: ''
         type: string
 jobs:
-  dump:
-    runs-on: ubuntu-latest
-    steps:
-      -
-        name: Dump context
-        uses: crazy-max/ghaction-dump-context@v1
+#   dump:
+#     runs-on: ubuntu-latest
+#     steps:
+#       -
+#         name: Dump context
+#         uses: crazy-max/ghaction-dump-context@v1
   update-prebuilts:
     runs-on: ubuntu-latest
     steps:
