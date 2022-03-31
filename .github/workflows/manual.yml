@@ -43,10 +43,12 @@ jobs:
         id: prepare-commit-message
         with:
           script: |
+            console.log(context);
+            console.log(context.payload);
             [
             'Update Prebuilts for Playground',
             'This workflow was triggered by ${{ github.event.sender.login }}.',
-            context.github.event.inputs.comment,
+            context.payload.event.inputs.comment,
             'Bug: n/a',
             'Test: CI',
             ].join('\n')
