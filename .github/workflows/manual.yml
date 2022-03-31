@@ -66,6 +66,11 @@ jobs:
           # escape multi line commit message
           # https://github.community/t/set-output-truncates-multiline-strings/16852/5
           echo "::set-output name=branch-name::$BRANCH_NAME"
+      - name: "dump context"
+        uses: actions/github-script@v6
+        id: dump-context
+        with:
+          script: console.log(context)
       - name: Create Pull Request
         if: ${{ steps.check-for-changes.outputs.has_changes >= 1 }}
         uses: actions/github-script@v6
