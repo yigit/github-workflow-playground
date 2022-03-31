@@ -1,5 +1,6 @@
 name: Update Prebuilts
 on:
+  push:
   workflow_dispatch:
     inputs:
       target-branch:
