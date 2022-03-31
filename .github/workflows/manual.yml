@@ -43,8 +43,6 @@ jobs:
         id: prepare-commit-message
         with:
           script: |
-            console.log(context);
-            console.log(context.payload);
             [
             'Update Prebuilts for Playground',
             'This workflow was triggered by ${{ github.event.sender.login }}.',
@@ -63,7 +61,7 @@ jobs:
           git config user.name "AndroidX Github Bot"
           git checkout -b $BRANCH_NAME
           git add auto.txt
-          git commit -m "${steps.prepare-commit-message.outputs.result}"
+          git commit -m "${{ steps.prepare-commit-message.outputs.result }}"
           git push origin $BRANCH_NAME
           # escape multi line commit message
           # https://github.community/t/set-output-truncates-multiline-strings/16852/5
