@@ -49,7 +49,7 @@ jobs:
             github.event.inputs.comment,
             'Bug: n/a',
             Test: CI',
-            ].joinToString("\n")
+            ].join('\n')
       - name: "we have changes"
         shell: bash
         id: "create-commit"
