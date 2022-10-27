@@ -1,0 +1,31 @@
+name: 'rebase-branch'
+description: 'Rebases a branch on top of another branch and pushes changes'
+inputs:
+  upstream:
+    description: "The upstream branch to rebase from"
+    required: true
+  branch:
+    description: "The branch to rebase (this will be checked out)"
+    required: true
+  git-username:
+    description: "The username to use for the github"
+    required: true
+  git-email:
+    description: "The git email address to use for the rebase push"
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+      id: checkout
+    - name: "Rebase branch"
+      id: rebase
+      shell: bash
+      run: |
+        set -x
+        git config user.email "${{ inputs.git-username }}"
+        git config user.name "${{ inputs.git-email }}"
+        git checkout ${{ inputs.branch }}
+        git fetch origin/${{ inputs.upstream }}
+        git rebase --onto ${{ inputs.upstream }}
+        git push origin ${{ inputs.branch }} --force-with-lease

@@ -1,0 +1,16 @@
+name: Rebase Branch
+on:
+  workflow_dispatch:
+jobs:
+  rebase-branches:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout repo"
+        uses: actions/checkout@v3
+      - name: "rebase"
+        uses: ./.github/actions/build-single-project
+        with:
+          upstream: main
+          branch: rebased
+          git-username: "Foo Bar"
+          git-email: "foobar@notadomain.com"
