@@ -28,4 +28,4 @@ runs:
         git fetch origin ${{ inputs.branch }}
         git fetch origin ${{ inputs.upstream }}
         git rebase --onto origin/${{ inputs.upstream }} origin/${{ inputs.branch }}
-        git push origin ${{ inputs.branch }} --force-with-lease
+        git push origin/${{ inputs.branch }} --force-with-lease
