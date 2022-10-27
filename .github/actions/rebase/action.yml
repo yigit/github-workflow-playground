@@ -25,7 +25,7 @@ runs:
         set -x
         git config user.email "${{ inputs.git-username }}"
         git config user.name "${{ inputs.git-email }}"
-        git checkout ${{ inputs.branch }}
-        git fetch origin/${{ inputs.upstream }}
-        git rebase --onto ${{ inputs.upstream }}
+        git fetch origin ${{ inputs.branch }}
+        git fetch origin ${{ inputs.upstream }}
+        git rebase --onto ${{ inputs.upstream }} ${{ inputs.branch }}
         git push origin ${{ inputs.branch }} --force-with-lease
