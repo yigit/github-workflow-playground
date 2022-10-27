@@ -29,4 +29,5 @@ runs:
         git fetch origin ${{ inputs.upstream }}
         git checkout ${{ inputs.branch }}
         git rebase --onto ${{ inputs.upstream }}
+        git log -3
         git push origin ${{ inputs.branch }} --force-with-lease
