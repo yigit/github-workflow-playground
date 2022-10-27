@@ -8,7 +8,7 @@ jobs:
       - name: "Checkout repo"
         uses: actions/checkout@v3
       - name: "rebase"
-        uses: ./.github/actions/build-single-project
+        uses: ./.github/actions/rebase
         with:
           upstream: main
           branch: rebased
