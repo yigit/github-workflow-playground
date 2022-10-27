@@ -18,6 +18,7 @@ runs:
   steps:
     - uses: actions/checkout@v3
       id: checkout
+      ref: ${{ inputs.branch }}
     - name: "Rebase branch"
       id: rebase
       shell: bash
@@ -25,9 +26,7 @@ runs:
         set -x
         git config user.email "${{ inputs.git-username }}"
         git config user.name "${{ inputs.git-email }}"
-        git fetch origin ${{ inputs.branch }}
         git fetch origin ${{ inputs.upstream }}
-        git checkout ${{ inputs.branch }}
         git rebase --onto ${{ inputs.upstream }}
         git log -3
         git push origin ${{ inputs.branch }} --force-with-lease
