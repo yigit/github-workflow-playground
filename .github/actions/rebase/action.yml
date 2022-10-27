@@ -28,6 +28,6 @@ runs:
         git config user.email "${{ inputs.git-username }}"
         git config user.name "${{ inputs.git-email }}"
         git fetch origin ${{ inputs.upstream }}
-        git rebase --onto ${{ inputs.upstream }}
+        git rebase --onto origin/${{ inputs.upstream }}
         git log -3
         git push origin ${{ inputs.branch }} --force-with-lease
